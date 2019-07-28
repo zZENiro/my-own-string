@@ -2,7 +2,6 @@
 #define STATES_H
 
 #include <iostream>
-#include "mystd.h"
 
 using namespace std;
 

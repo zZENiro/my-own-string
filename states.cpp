@@ -1,6 +1,5 @@
 #include "states.h"
-
-using namespace myStd;
+#include "mystd.h"
 
 String::String()
 {
@@ -11,31 +10,31 @@ String::String()
 
 String::String(const char* str)
 {
-    _len = strlen(str);
+    _len = myStd::strlen(str);
     _size = _len + 1;
-    strcopy(_string, str);
+    myStd::strcopy(_string, str);
 }
 String::String(char* str)
 {
-    _len = strlen(str);
+    _len = myStd::strlen(str);
     _size = _len + 1;
-    strcopy(_string, str);
+    myStd::strcopy(_string, str);
 }
 
 String &String::operator=(char * str)
 {
-    this->_len = strlen(str);
+    this->_len = myStd::strlen(str);
     this->_size = _len + 1;
-    strcopy(this->_string, str);
+    myStd::strcopy(this->_string, str);
 
     return *this;
 }
 
 String &String::operator=(const char * str)
 {
-    this->_len = strlen(str);
+    this->_len = myStd::strlen(str);
     this->_size = _len + 1;
-    strcopy(this->_string, str);
+    myStd::strcopy(this->_string, str);
 
     return *this;
 }
@@ -51,7 +50,7 @@ String &String::operator=(String str)
 
 String &String::operator+(const char * str)
 {
-    int count = strlen(str);
+    int count = myStd::strlen(str);
     char* concat = new char[this->_len + count];
 
     for(int i = 0; i < this->_len; ++i)

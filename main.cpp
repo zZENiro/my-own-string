@@ -8,7 +8,10 @@ using namespace myStd;
 
 int main()
 {
+    String str;
+    str = "Hello, World";
 
+    cout << str.string();
 
     return 0;
 }
