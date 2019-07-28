@@ -16,6 +16,8 @@ class String
 
     // methods
     int strlen(const char* str);
+    int strlen(char* str);
+    char strcopy(char* dest, const char* src);
     char strcopy(char* dest, char* src);
 
 public:
@@ -27,8 +29,9 @@ public:
 
     // ctor with data
     String(const char* str);
+    String (char* str);
 
-    int getSize() { return this->countElems; }
+    int getSize() { return this->_size; }
     char string() { return *_string; }
 
 };
