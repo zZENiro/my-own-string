@@ -1,5 +1,7 @@
 #include "states.h"
 #include "mystd.h"
+#include <iostream>
+
 
 String::String()
 {
@@ -10,12 +12,20 @@ String::String()
 
 String::String(const char* str)
 {
+    _len = 0;
+    _size = 0;
+    _string = nullptr;
+
     _len = myStd::strlen(str);
     _size = _len + 1;
     myStd::strcopy(_string, str);
 }
 String::String(char* str)
 {
+    _len = 0;
+    _size = 0;
+    _string = nullptr;
+
     _len = myStd::strlen(str);
     _size = _len + 1;
     myStd::strcopy(_string, str);
@@ -23,6 +33,10 @@ String::String(char* str)
 
 String &String::operator=(char * str)
 {
+    _len = 0;
+    _size = 0;
+    _string = nullptr;
+
     this->_len = myStd::strlen(str);
     this->_size = _len + 1;
     myStd::strcopy(this->_string, str);
@@ -32,9 +46,13 @@ String &String::operator=(char * str)
 
 String &String::operator=(const char * str)
 {
+    _len = 0;
+    _size = 0;
+    _string = nullptr;
+
     this->_len = myStd::strlen(str);
     this->_size = _len + 1;
-    myStd::strcopy(this->_string, str);
+    this->_string = myStd::strcopy(this->_string, str);
 
     return *this;
 }
@@ -55,11 +73,11 @@ String &String::operator+(const char * str)
 
     for(int i = 0; i < this->_len; ++i)
     {
-	*(concat + i) = *(this->_string + i);
+    *(concat + i) = *(this->_string + i);
     }
     for(int i = this->_len + 1; i < this->_len + count; ++i)
     {
-	*(concat + i) = *(str + i);
+    *(concat + i) = *(str + i);
     }
 
     delete[] this->_string;
@@ -89,7 +107,7 @@ String::String(const String& str)
 String::~String()
 {
     if (this->_string != nullptr) {
-	delete[] this->_string;
-	this->_string = nullptr;
+        delete[] this->_string;
+        cout << this->_string << " :deleted";
     }
 }

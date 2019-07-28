@@ -16,7 +16,7 @@ static int strlen(char* str)
     for (len = 0; str[len]; (len)++);
     return len;
 }
-static char strcopy(char* dest, const char* src)
+static char* strcopy(char* dest, const char* src)
 {
     int count = strlen(src);
     delete[] dest;
@@ -26,9 +26,9 @@ static char strcopy(char* dest, const char* src)
         *(dest + i) = *(src + i);
     }
 
-    return *dest;
+    return dest;
 }
-static char strcopy(char* dest, char* src)
+static char* strcopy(char* dest, char* src)
 {
     int count = strlen(src);
     delete[] dest;
@@ -38,7 +38,7 @@ static char strcopy(char* dest, char* src)
         *(dest + i) = *(src + i);
     }
 
-    return *dest;
+    return dest;
 }
 
 }
