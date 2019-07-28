@@ -1,9 +1,8 @@
 #ifndef STATES_H
 #define STATES_H
 
-#define DEBUG
-
 #include <iostream>
+#include "mystd.h"
 
 using namespace std;
 
@@ -14,11 +13,6 @@ class String
     char* _string;
     int _size;
 
-    // methods
-    static int strlen(const char* str);
-    static int strlen(char* str);
-    static char strcopy(char* dest, const char* src);
-    static char strcopy(char* dest, char* src);
 
 public:
     // ctor of ini
@@ -37,7 +31,7 @@ public:
     char* string() { return _string; }
 
     String& operator= (char*);
-    String& operator= (char*);
+    String& operator= (const char*);
     String& operator= (String);
     String& operator+ (const char* );
     String& operator+=(const char* );

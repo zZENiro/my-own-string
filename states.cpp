@@ -1,5 +1,7 @@
 #include "states.h"
 
+using namespace myStd;
+
 String::String()
 {
     _len = 0;
@@ -11,15 +13,65 @@ String::String(const char* str)
 {
     _len = strlen(str);
     _size = _len + 1;
-    _string = new char[_size];
     strcopy(_string, str);
 }
 String::String(char* str)
 {
     _len = strlen(str);
     _size = _len + 1;
-    _string = new char[_size];
     strcopy(_string, str);
+}
+
+String &String::operator=(char * str)
+{
+    this->_len = strlen(str);
+    this->_size = _len + 1;
+    strcopy(this->_string, str);
+
+    return *this;
+}
+
+String &String::operator=(const char * str)
+{
+    this->_len = strlen(str);
+    this->_size = _len + 1;
+    strcopy(this->_string, str);
+
+    return *this;
+}
+
+String &String::operator=(String str)
+{
+    this->_string = str.string();
+    this->_size = str.getSize();
+    this->_len = str.getLength();
+
+    return *this;
+}
+
+String &String::operator+(const char * str)
+{
+    int count = strlen(str);
+    char* concat = new char[this->_len + count];
+
+    for(int i = 0; i < this->_len; ++i)
+    {
+        *(concat + i) = *(this->_string + i);
+    }
+    for(int i = this->_len + 1; i < this->_len + count; ++i)
+    {
+        *(concat + i) = *(str + i);
+    }
+
+    delete[] this->_string;
+    this->_string = concat;
+
+    return *this;
+}
+
+String &String::operator+=(const char *)
+{
+
 }
 
 String::String(String& str)
@@ -35,63 +87,6 @@ String::String(const String& str)
     this->_len = str._len;
 }
 
-char String::strcopy(char* dest, const char* src)
-{
-    int count = strlen(src);
-    delete[] dest;
-    dest = new char[count];
-
-    for (int i = 0; i < count; ++i) {
-        *(dest + i) = *(src + i);
-    }
-
-    return *dest;
-}
-char String::strcopy(char* dest, char* src)
-{
-    int count = strlen(src);
-    delete[] dest;
-    dest = new char[count];
-
-    for (int i = 0; i < count; ++i) {
-        *(dest + i) = *(src + i);
-    }
-
-    return *dest;
-}
-
-int String::strlen(const char* str)
-{
-    int lenght = 0;
-    while(str != nullptr)
-    {
-        str++;
-        lenght++;
-    }
-    _len = lenght;
-
-#ifdef DEBUG
-    printf("%d", lenght);
-#endif // !DEBUG
-
-    return lenght;
-}
-int String::strlen(char *str) {
-    int lenght = 0;
-    while(str != nullptr)
-    {
-        str++;
-        lenght++;
-    }
-    _len = lenght;
-
-#ifdef DEBUG
-    printf("%d", lenght);
-#endif // !DEBUG
-
-    return lenght;
-}
-
 String::~String()
 {
     if (this->_string != nullptr) {
@@ -99,3 +94,4 @@ String::~String()
         this->_string = nullptr;
     }
 }
+
