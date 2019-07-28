@@ -15,10 +15,10 @@ class String
     int _size;
 
     // methods
-    int strlen(const char* str);
-    int strlen(char* str);
-    char strcopy(char* dest, const char* src);
-    char strcopy(char* dest, char* src);
+    static int strlen(const char* str);
+    static int strlen(char* str);
+    static char strcopy(char* dest, const char* src);
+    static char strcopy(char* dest, char* src);
 
 public:
     // ctor of ini
@@ -26,14 +26,23 @@ public:
 
     // ctor of copy
     String(String& str);
+    String (const String& str);
 
     // ctor with data
     String(const char* str);
     String (char* str);
 
     int getSize() { return this->_size; }
-    char string() { return *_string; }
+    int getLength() { return this->_len; }
+    char* string() { return _string; }
 
+    String& operator= (char*);
+    String& operator= (char*);
+    String& operator= (String);
+    String& operator+ (const char* );
+    String& operator+=(const char* );
+
+    ~String();
 };
 
 #endif // STATES_H

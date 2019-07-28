@@ -24,7 +24,15 @@ String::String(char* str)
 
 String::String(String& str)
 {
-
+    this->_string = str.string();
+    this->_size = str.getSize();
+    this->_len = str.getLength();
+}
+String::String(const String& str)
+{
+    this->_string = str._string;
+    this->_size = str._size;
+    this->_len = str._len;
 }
 
 char String::strcopy(char* dest, const char* src)
@@ -82,4 +90,12 @@ int String::strlen(char *str) {
 #endif // !DEBUG
 
     return lenght;
+}
+
+String::~String()
+{
+    if (this->_string != nullptr) {
+        delete[] this->_string;
+        this->_string = nullptr;
+    }
 }
