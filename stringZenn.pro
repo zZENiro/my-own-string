@@ -5,8 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    states.cpp \
-    mystd.cpp
+    sates.cpp
 
 HEADERS += \
     states.h \

@@ -6,41 +6,15 @@ namespace myStd
 
 static int strlen(const char* str)
 {
-    int lenght = 0;
-    if (str != nullptr)
-    {
-        lenght += 1;
-        while(str != nullptr)
-        {
-            str++;
-            lenght++;
-        }
-#ifdef DEBUG
-        printf("%d", lenght);
-#endif // !DEBUG
-        return lenght;
-    } else {
-        return lenght;
-    }
+    int len = 0;
+    for (len = 0; str[len]; (len)++);
+    return len;
 }
 static int strlen(char* str)
 {
-    int lenght = 0;
-    if (str != nullptr)
-    {
-        lenght += 1;
-        while(str != nullptr)
-        {
-            str++;
-            lenght++;
-        }
-#ifdef DEBUG
-        printf("%d", lenght);
-#endif // !DEBUG
-        return lenght;
-    } else {
-        return lenght;
-    }
+    int len = 0;
+    for (len = 0; str[len]; (len)++);
+    return len;
 }
 static char strcopy(char* dest, const char* src)
 {

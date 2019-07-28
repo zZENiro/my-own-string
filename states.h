@@ -2,6 +2,7 @@
 #define STATES_H
 
 #include <iostream>
+#include "mystd.h"
 
 using namespace std;
 
@@ -11,7 +12,6 @@ class String
     int _len;
     char* _string;
     int _size;
-
 
 public:
     // ctor of ini

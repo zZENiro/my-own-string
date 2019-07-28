@@ -55,11 +55,11 @@ String &String::operator+(const char * str)
 
     for(int i = 0; i < this->_len; ++i)
     {
-        *(concat + i) = *(this->_string + i);
+	*(concat + i) = *(this->_string + i);
     }
     for(int i = this->_len + 1; i < this->_len + count; ++i)
     {
-        *(concat + i) = *(str + i);
+	*(concat + i) = *(str + i);
     }
 
     delete[] this->_string;
@@ -89,8 +89,7 @@ String::String(const String& str)
 String::~String()
 {
     if (this->_string != nullptr) {
-        delete[] this->_string;
-        this->_string = nullptr;
+	delete[] this->_string;
+	this->_string = nullptr;
     }
 }
-
