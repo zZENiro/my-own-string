@@ -16,17 +16,20 @@ static int strlen(char* str)
     for (len = 0; str[len]; (len)++);
     return len;
 }
-static char* strcopy(char* dest, const char* src)
+static char* strcopy(char* dest, const char* src) // копирую строки
 {
-    int count = strlen(src);
+    int count = strlen(src); // нахожу длину
     delete[] dest;
-    dest = new char[count];
+    dest = new char[count]; // выделяю новую область в памяти для массива dest
+                                       // и получаю такое...
 
     for (int i = 0; i < count; ++i) {
         *(dest + i) = *(src + i);
     }
 
-    return dest;
+    return dest;                  // потом возваращается массив dest, в который я копировал const char* src
+                                      // и далее программа работает некорректно, т.к. считает ещё и непечатаемые
+                                      // символы
 }
 static char* strcopy(char* dest, char* src)
 {
@@ -40,7 +43,6 @@ static char* strcopy(char* dest, char* src)
 
     return dest;
 }
-
 }
 
 #endif // MYSTD_H

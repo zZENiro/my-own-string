@@ -10,9 +10,9 @@ using namespace myStd;
 int main()
 {
     String str;
-    str = "Hello, World";
-    String strr("asdasda");
-    str = strr;
+    String str_1(", goodbye");
+    String str_2("Hello");
+    str = str_2  + str_1;
 
     cout << "done";
 

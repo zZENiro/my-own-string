@@ -19,20 +19,24 @@ public:
 
     // ctor of copy
     String(String& str);
-    String (const String& str);
+    String(const String& str);
 
     // ctor with data
     String(const char* str);
-    String (char* str);
+    String(char* str);
 
-    int getSize() { return this->_size; }
-    int getLength() { return this->_len; }
-    char* string() { return _string; }
+    int    getSize()      { return this->_size; }
+    int    getLength() { return this->_len; }
+    char* string()       { return _string; }
 
     String& operator= (char*);
     String& operator= (const char*);
     String& operator= (String);
-    String& operator+ (const char* );
+
+    String& operator+ (String);
+    String& operator+ (const char* str);
+    String& operator+ (String* str);
+
     String& operator+=(const char* );
 
     ~String();
