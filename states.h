@@ -33,11 +33,12 @@ public:
     String& operator= (const char*);
     String& operator= (String);
 
-    String& operator+ (String);
-    String& operator+ (const char* str);
-    String& operator+ (String* str);
+    String operator+ (String);
+    String operator+ (const char* str);
+    String operator+ (String* str);
 
     String& operator+=(const char* );
+    String& operator+=(String);
 
     ~String();
 };

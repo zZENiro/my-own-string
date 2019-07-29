@@ -66,10 +66,10 @@ String &String::operator= (String str)
     return *this;
 }
 
-String &String::operator+ (const char * str)
+String String::operator+ (const char * str)
 {
-    int count = myStd::strlen(str);
-    char* concat = new char[this->_len + count];
+    int count = myStd::strlen(str) + 1;
+    char* concat = new char[this->_size + count];
 
     for(int i = 0; i < this->_len; ++i)
     {
@@ -84,10 +84,10 @@ String &String::operator+ (const char * str)
     return str_1;
 }
 
-String &String::operator+ (String str)
+String String::operator+ (String str)
 {
-    int count = str._len;
-    char* concat = new char[this->_len + count];
+    int count = str._size;
+    char* concat = new char[this->_size + count];
 
     for(int i = 0; i < this->_len; ++i)
     {
@@ -98,15 +98,14 @@ String &String::operator+ (String str)
         *(concat + i) = *((str._string) + i - this->_len);
     }
 
-    String toReturn;
-    toReturn = concat;
-    return toReturn;
+    String ret(concat);
+    return ret;
 }
 
 String &String::operator+=(const char * str)
 {
-    int count = myStd::strlen(str);
-    char* concat = new char[this->_len + count];
+    int count = myStd::strlen(str) + 1;
+    char* concat = new char[this->_size + count];
 
     for(int i = 0; i < this->_len; ++i)
     {
@@ -118,6 +117,8 @@ String &String::operator+=(const char * str)
     }
 
     this->_string = concat;
+    this->_len = myStd::strlen(concat);
+    this->_size = _len + 1;
     return *this;
 }
 

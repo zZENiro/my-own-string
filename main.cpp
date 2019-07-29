@@ -12,7 +12,7 @@ int main()
     String str;
     String str_1(", goodbye");
     String str_2("Hello");
-    str = str_2  + str_1;
+    str = str_2 + str_1;
 
     cout << "done";
 
